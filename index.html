@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwan's Image Editor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+        
+        <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="image-editor.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light " style="font-size: 25px; font-family: sans-serif; background-color: rgb(225, 56, 251);color:rgb(15, 3, 3);">
+        <img src="logo.png" width="130" height="80"
+            class="d-inline-block align-top" alt="">
+        Rizwan's - Image Editor
+    </nav>
+    <div id="container">
+        <div class="text_box">
+            <div id="imageEditor">
+                <section id="editorContainer">
+                    <canvas id="editor"></canvas>
+                </section>
+            </div>
+            <section id="toolbar">
+                <button id="upload" class="btn btn-success" title="Upload">Upload</button>
+                <button id="save" class="btn btn-danger" title="Save">Save</button>
+                <br>
+                <br>
+                <button id="flipHor" class="btn btn-info" title="Flip Horizontally">Flip Horizontally</button>
+                <button id="flipVert" class="btn btn-info" title="Flip vertically">Flip vertically</button>
+                <br>
+                <br>
+                <button id="rotateL" class="btn btn-info" title="Rotate left">Rotate Left</button>
+                <button id="rotateR" class="btn btn-info" title="Rotate right">Rotate Right</button>
+                <br>
+                <br>
+                <button id="resize" class="btn btn-info" title="Resize">Resize</button>
+                <button id="greyscale" class="btn btn-info" title="Convert to grayscale">Grayscale</button>
+                <br>
+                <br>
+          
+            <label>Blur</label>
+	<input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="blur" data-scale="px"><br>
+	<label>Brightness</label>
+	<input type="range" min="0" max="200" value="100" step="1" onchange="applyFilter()" data-filter="brightness" data-scale="%"><br>
+	<label>Contrast</label>
+	<input type="range" min="0" max="200" value="100" step="1" onchange="applyFilter()" data-filter="contrast" data-scale="%"><br>
+    <label>Grayscale</label>
+    <input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="grayscale" data-scale="%"><br>
+    <label>Hue Rotate</label>
+    <input type="range" min="0" max="360" value="0" step="1" onchange="applyFilter()" data-filter="hue-rotate" data-scale="deg"><br>
+    <label>Invert</label>
+    <input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="invert" data-scale="%"><br>
+            </section>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+		var image = document.querySelector("#editor");
+		var filterControls = document.querySelectorAll('input[type=range]');
+		function applyFilter() {
+			var computedFilters = '';
+			filterControls.forEach(function(item, index) {
+				computedFilters += item.getAttribute('data-filter') + '(' + item.value + item.getAttribute('data-scale') + ') ';
+			});
+			image.style.filter = computedFilters;
+		};
+	</script>    
+    
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
